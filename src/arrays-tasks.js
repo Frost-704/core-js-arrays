@@ -364,7 +364,6 @@ function createChunks(arr, chunkSize) {
     result.push(arr.slice(0, chunkSize));
     result.push(...createChunks(arr.slice(chunkSize), chunkSize));
   }
-  console.log(result);
   return result;
 }
 
@@ -380,8 +379,14 @@ function createChunks(arr, chunkSize) {
  *    generateOdds(2) => [ 1, 3 ]
  *    generateOdds(5) => [ 1, 3, 5, 7, 9 ]
  */
-function generateOdds(/* len */) {
-  throw new Error('Not implemented');
+function generateOdds(len) {
+  const result = new Array(len).fill(1);
+  return result.map((e, index) => {
+    if (index === 0) {
+      return e;
+    }
+    return index * 2 + 1;
+  });
 }
 
 /**
